@@ -1,0 +1,45 @@
+﻿Teams,Against,TargetTeamScore,OtherTeamScore,Venue,TeamsStadium,Result
+Chelsea,Crystal Palace,3,0,Stamford Bridge,Stamford Bridge,Win
+Chelsea,Arsenal,2,0,Emirates,Stamford Bridge,Win
+Chelsea,Liverpool,1,1,Anfield,Stamford Bridge,Draw
+Chelsea,Aston Villa,3,0,Stamford Bridge,Stamford Bridge,Win
+Chelsea,Spurs,3,0,Tottenham Hotspur Stadium,Stamford Bridge,Win
+Chelsea,Manchester City,0,1,Stamford Bridge,Stamford Bridge,Loss
+Chelsea,Southampton,3,1,Stamford Bridge,Stamford Bridge,Win
+Chelsea,Brentford,1,0,Brentford Community Stadium,Stamford Bridge,Win
+Chelsea,Norwich,7,0,Stamford Bridge,Stamford Bridge,Win
+Chelsea,Newcastle,3,0,St.James' Park,Stamford Bridge,Win
+Chelsea,Burnley,1,1,Stamford Bridge,Stamford Bridge,Draw
+Manchester City,Tottenham Hotspur,1,0,Tottenham Hotspur Stadium,Etihad Stadium,Loss
+Manchester City,Norwich,5,0,Etihad Stadium,Etihad Stadium,Win
+Manchester City,Arsenal,5,0,Etihad Stadium,Etihad Stadium,Win
+Manchester City,Leicester,1,0,King Power Stadium,Etihad Stadium,Win
+Manchester City,Southampton,0,0,Etihad Stadium,Etihad Stadium,Draw
+Manchester City,Cheslea,1,0,Stamford Bridge,Etihad Stadium,Win
+Manchester City,Liverpool,2,2,Anfield,Etihad Stadium,Draw
+Manchester City,Burnley,2,0,Etihad Stadium,Etihad Stadium,Win
+Manchester City,Brighton,4,1,Amex Stadium,Etihad Stadium,Win
+Manchester City,Crystal Palace,0,2,Etihad Stadium,Etihad Stadium,Loss
+Manchester City,Manchester United,2,0,Etihad Stadium,Etihad Stadium,Win
+West Ham United,Newcastle,4,2,St.James' Park,London Stadium,Win
+West Ham United,Leicester,4,1,London Stadium,London Stadium,Win
+West Ham United,Crystal Palace,2,2,London Stadium,London Stadium,Draw
+West Ham United,Southampton,0,0,St. Mary's Stadium,London Stadium,Draw
+West Ham United,Manchester United,1,2,London Stadium,London Stadium,Loss
+West Ham United,Leeds,2,1,Elland Road,London Stadium,Win
+West Ham United,Brentford,1,2,London Stadium,London Stadium,Loss
+West Ham United,Everton,1,0,Goodison Park,London Stadium,Win
+West Ham United,Tottenham Hotspur,1,0,London Stadium,London Stadium,Win
+West Ham United,Aston Villa,4,1,Villa Park,London Stadium,Win
+West Ham United,Liverpool,3,2,London Stadium,London Stadium,Win
+Liverpool,Norwich,3,0,Carrow Road,Anfield,Win
+Liverpool,Burnley,2,0,Anfield,Anfield,Win
+Liverpool,Cheslea,1,1,Anfield,Anfield,Draw
+Liverpool,Leeds,3,0,Elland Road,Anfield,Win
+Liverpool,Crystal Palace,3,0,Anfield,Anfield,Win
+Liverpool,Brentford,3,3,Brentford Community Stadium,Anfield,Draw
+Liverpool,Manchester City,2,2,Anfield,Anfield,Draw
+Liverpool,Watford,5,0,Vicarage Road,Anfield,Win
+Liverpool,Manchester United,5,0,Old Trafford,Anfield,Win
+Liverpool,Brighton,2,2,Anfield,Anfield,Draw
+Liverpool,West Ham United,2,3,London Stadium,Anfield,Loss
