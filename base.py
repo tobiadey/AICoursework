@@ -15,6 +15,8 @@ X = iris.data
 y = iris.target
 variety = iris.target_names
 
+plt.scatter(X,y)
+plt.show();
 
 # We create a learnset from the sets above. We use permutation from np.random to split the data randomly.
 from sklearn.model_selection import train_test_split
