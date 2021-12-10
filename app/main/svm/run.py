@@ -7,6 +7,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
+#testing code
+# 
+# X_train = X_train.to_numpy()
+# y_train = y_train.to_numpy()
+# X_test = X_test.to_numpy()
+# y_test = y_test.to_numpy()
+#
+#
+# for i in range(25):
+#     plt.subplot(5,5,i+1)
+#     plt.xticks([])
+#     plt.yticks([])
+#     plt.imshow(X_train[i].reshape(28,28)) #imshow  takes an array ( with dimension = 2, RGB or B/W) and gives you the image that corresponds to it
+#     plt.show()
+
+
 from app.main.base.run import X,y
 
 
