@@ -3,12 +3,18 @@ from app.main.base.run import *
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 
-X = np.array(X,dtype='float32')
-y = np.array(y,dtype='float32')
-X = X/255.
-y= y/255.
+# X = np.array(X,dtype='float32')
+# y = np.array(y,dtype='float32')
+# X = X/255.
+# # y= y/255.
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
+
+
+X_train = X_train.to_numpy()
+y_train = y_train.to_numpy()
+X_test = X_test.to_numpy()
+y_test = y_test.to_numpy()
 
 print("inside cnn content")
 print('Train: X=%s, y=%s' % (X_train.shape, y_train.shape))

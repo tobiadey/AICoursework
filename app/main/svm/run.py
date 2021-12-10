@@ -13,6 +13,23 @@ from app.main.base.run import *
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
 
+#testing code
+
+X_train = X_train.to_numpy()
+y_train = y_train.to_numpy()
+X_test = X_test.to_numpy()
+y_test = y_test.to_numpy()
+
+
+for i in range(25):
+    plt.subplot(5,5,i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.imshow(X_train[i].reshape(28,28)) #imshow  takes an array ( with dimension = 2, RGB or B/W) and gives you the image that corresponds to it
+plt.show()
+
+
+print(y_test)
 # build the model
 model = LinearRegression()
 model.fit(X_train, y_train)
@@ -60,7 +77,9 @@ def chart_regression(pred, y, sort=True):
     plt.legend()
     plt.show();
 
-# chart_regression(y_pred[:100].flatten(),y_test[:100],sort=True)
+chart_regression(y_pred[:100].flatten(),y_test[:100],sort=True)
+
+chart_regression(y_pred.flatten(),y_test,sort=True)
 
 
 print(" -----------------------------repeat above using a support vector machine for regression sklearn.sv.SVR--------------------")

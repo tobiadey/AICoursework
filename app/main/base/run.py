@@ -28,10 +28,10 @@ print(df.head())
 
 
 # train_data = np.array(df,dtype='float32')
+# #
+# # print(train_data)
 #
-# print(train_data)
-
-# Pixel data (divided by 255 to rescale 0-1 not 0-255)
+# # Pixel data (divided by 255 to rescale 0-1 not 0-255)
 # X = train_data[:,1:]/255
 # # First column (divided by 255 to rescale 0-1 not 0-255)
 # y = train_data[:,0]
