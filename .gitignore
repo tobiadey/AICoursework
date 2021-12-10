@@ -12,6 +12,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
+logs\cnn_1layer
 dist/
 downloads/
 eggs/
