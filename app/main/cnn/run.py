@@ -3,7 +3,10 @@ from app.main.base.run import *
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 
-
+X = np.array(X,dtype='float32')
+y = np.array(y,dtype='float32')
+X = X/255.
+y= y/255.
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
 

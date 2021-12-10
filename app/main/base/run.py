@@ -27,14 +27,14 @@ df = pd.read_csv('./data/test.csv')
 print(df.head())
 
 
-train_data = np.array(df,dtype='float32')
-
-print(train_data)
+# train_data = np.array(df,dtype='float32')
+#
+# print(train_data)
 
 # Pixel data (divided by 255 to rescale 0-1 not 0-255)
-X = train_data[:,1:]/255
-# First column (divided by 255 to rescale 0-1 not 0-255)
-y = train_data[:,0]
+# X = train_data[:,1:]/255
+# # First column (divided by 255 to rescale 0-1 not 0-255)
+# y = train_data[:,0]
 
 # # Splitting the dataset into the Training set and Test set
 # from sklearn.model_selection import train_test_split
@@ -42,8 +42,8 @@ y = train_data[:,0]
 
 
 # #
-# y = df['label']
-# X = df.drop('label',axis=1)
+y = df['label']
+X = df.drop('label',axis=1)
 #
 # image = X[16,:].reshape((28,28))
 # plt.imshow(image)

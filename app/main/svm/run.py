@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-from app.main.base.run import X,y
+from app.main.base.run import *
 
 
 from sklearn.model_selection import train_test_split
@@ -60,7 +60,7 @@ def chart_regression(pred, y, sort=True):
     plt.legend()
     plt.show();
 
-chart_regression(y_pred[:100].flatten(),y_test[:100],sort=True)
+# chart_regression(y_pred[:100].flatten(),y_test[:100],sort=True)
 
 
 print(" -----------------------------repeat above using a support vector machine for regression sklearn.sv.SVR--------------------")
