@@ -1,14 +1,99 @@
 
 from app.main.base.run import X,y
+#
+# from sklearn.model_selection import train_test_split
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
+#
+# print("inside cnn content")
+# print(X_train)
+# print(X_test)
+# print(y_train)
+# print(y_test)
+#
+# from app.main.base.run import *
+# import tensorflow as tf
+# from keras.preprocessing.image import ImageDataGenerator
 
+# X = np.array(X,dtype='float32')
+# y = np.array(y,dtype='float32')
+# X = X/255.
+# # y= y/255.
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
 
+
+# X_train = X_train.to_numpy()
+# y_train = y_train.to_numpy()
+# X_test = X_test.to_numpy()
+# y_test = y_test.to_numpy()
+
 print("inside cnn content")
-print(X_train)
-print(X_test)
-print(y_train)
-print(y_test)
+print('Train: X=%s, y=%s' % (X_train.shape, y_train.shape))
+print('Test: X=%s, y=%s' % (X_test.shape, y_test.shape))
+# # print(X_test)
+# # print(y_train)
+# # print(y_test)
+#
+
+'''
+method 1 few error methods present.
+'''
+im_rows = 28
+im_cols = 28
+batch_size = 512
+im_shape = (im_rows, im_cols, 1)
+
+X_train = X_train.reshape(X_train.shape[0], *im_shape)
+X_test =X_test.reshape(X_test.shape[0], *im_shape)
+# y_train = y_train.reshape(y_train.shape[0], *im_shape)
+
+print('x_train shape: {}'.format(X_train.shape))
+print('x_test shape: {}'.format(X_test.shape))
+# print('x_validate shape: {}'.format(y_train.shape))
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D,MaxPooling2D,Dense,Dropout,Flatten
+
+cnn_model = Sequential([
+    Conv2D(filters=32, kernel_size=3, activation='relu', input_shape=im_shape),
+    MaxPooling2D(pool_size=2),
+    Dropout(0.2),
+
+    Flatten(),
+    Dense(32, activation='relu'),
+    Dense(10, activation='softmax')
+])
+
+
+import tensorflow as tf
+from keras.callbacks import TensorBoard
+
+tensorboard = TensorBoard(
+    log_dir=r'logs\{}'.format('cnn_1layer'),
+    write_graph=True,
+    write_grads=True,
+    histogram_freq=1,
+    write_images=True,
+)
+
+cnn_model.compile(
+    loss='sparse_categorical_crossentropy',
+    optimizer= tf.keras.optimizers.Adam(lr=0.001),
+    metrics=['accuracy']
+)
+
+
+cnn_model.fit(
+    X_train, y_train, batch_size=batch_size,
+    epochs=10, verbose=1,
+    validation_data=(X_test, y_test),
+    callbacks=[tensorboard]
+)
+
+score = cnn_model.evaluate(X_test, y_test, verbose=0)
+
+print('test loss: {:.4f}'.format(score[0]))
+print(' test acc: {:.4f}'.format(score[1]))
 
 
 '''
