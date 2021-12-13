@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 
 #testing code
-# 
+#
 # X_train = X_train.to_numpy()
 # y_train = y_train.to_numpy()
 # X_test = X_test.to_numpy()
@@ -25,6 +25,7 @@ import matplotlib.pyplot as plt
 
 from app.main.base.run import X,y
 
+# y = tensorflow.keras.utils.to_categorical(y)
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
@@ -81,11 +82,17 @@ chart_regression(y_pred[:100].flatten(),y_test[:100],sort=True)
 
 print(" -----------------------------repeat above using a support vector machine for regression sklearn.sv.SVR--------------------")
 
+import tensorflow.keras.utils
+
+
 from sklearn.svm import SVC # "Support vector classifier"
 from sklearn.metrics import accuracy_score
 
+# play around with values to see if any improvement
 svm_model = SVC()
 
+print(X_train.shape)
+print(y_train.size)
 #Train the model using the training sets
 svm_model.fit(X_train, y_train)
 
@@ -115,7 +122,7 @@ print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_p
 # from sklearn.svm import SVC
 # classifier =SVC(gamma='scale',kernel='rbf',C=8)
 # classifier.fit(X_train, y_train)
-#
+
 #
 # y_pred = classifier.predict(X_test)
 # from sklearn.metrics import confusion_matrix, accuracy_score
