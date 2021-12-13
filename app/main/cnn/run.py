@@ -11,12 +11,33 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 1)
 
 
-X_train = X_train.to_numpy()
+
+
+
+
+
+print("-----------------------------Inside cnn content-----------------------------")
+
+
+
+'''
+method 1 few error methods present.
+'''
+
+#Define the shape of the image.
+rows = 28
+cols = 28
+batch_size = 512
+im_shape = (rows, cols, 1)
+#reshape the arrays as needed.
+X_train = (X_train.to_numpy()/255.).reshape(X_train.shape[0], *im_shape)
+X_test =(X_test.to_numpy()/255.).reshape(X_test.shape[0], *im_shape)
+# y_train = y_train.reshape(y_train.shape[0], *im_shape)
 y_train = y_train.to_numpy()
-X_test = X_test.to_numpy()
 y_test = y_test.to_numpy()
 
-print("inside cnn content")
+
+
 print('Train: X=%s, y=%s' % (X_train.shape, y_train.shape))
 print('Test: X=%s, y=%s' % (X_test.shape, y_test.shape))
 # # print(X_test)
@@ -24,110 +45,65 @@ print('Test: X=%s, y=%s' % (X_test.shape, y_test.shape))
 # # print(y_test)
 #
 
-'''
-method 1 few error methods present.
-'''
-im_rows = 28
-im_cols = 28
-batch_size = 512
-im_shape = (im_rows, im_cols, 1)
-
-X_train = X_train.reshape(X_train.shape[0], *im_shape)
-X_test =X_test.reshape(X_test.shape[0], *im_shape)
-# y_train = y_train.reshape(y_train.shape[0], *im_shape)
-
-print('x_train shape: {}'.format(X_train.shape))
-print('x_test shape: {}'.format(X_test.shape))
-# print('x_validate shape: {}'.format(y_train.shape))
-
+#define the cnn model
 cnn_model = Sequential([
+    # For the convolutional stage, add the number of feature detectors, alongside the feature detector size. 3 indicates to a 3x3 matrix. and set the activation to relu.
+    # 32 is a classic filter number.
     Conv2D(filters=32, kernel_size=3, activation='relu', input_shape=im_shape),
-    MaxPooling2D(pool_size=2),
-    Dropout(0.2),
+    # Apply th emax pooling feature to our feature map. This helps with identifying certain features in different positions within the image, eg. when an animal is facing right or left.
+    # 2x2 matrix with a strides of 2
+    MaxPooling2D(pool_size=2, strides=2),
+    # #add second convolutional layer
+    # Conv2D(filters=32, kernel_size=3, activation='relu'),
+    # MaxPooling2D(pool_size=2, strides=2),
 
+
+    Dropout(0.2),
+    #flatten the previous steps into a 1 dimensional vector.
     Flatten(),
-    Dense(32, activation='relu'),
+    #add the fully connected neuron layers
+    Dense(units=32, activation='relu'),
+
+    #output layer
+    #As we are using multiple classification, the softmax feature is used.for Also we have 10 possible outouts, so the the density is 10.
     Dense(10, activation='softmax')
 ])
 
 
-tensorboard = TensorBoard(
-    log_dir=r'logs\{}'.format('cnn_1layer'),
-    write_graph=True,
-    write_grads=True,
-    histogram_freq=1,
-    write_images=True,
-)
+# tensorboard = TensorBoard(
+#     log_dir=r'logs\{}'.format('cnn_1layer'),
+#     write_graph=True,
+#     write_grads=True,
+#     histogram_freq=1,
+#     write_images=True,
+# )
 
+#Compile the model
 cnn_model.compile(
     loss='sparse_categorical_crossentropy',
-    optimizer=Adam(lr=0.001),
+    optimizer='adam',
+    #What you want to maximise.
     metrics=['accuracy']
 )
 
-
+#train the model.
 cnn_model.fit(
     X_train, y_train, batch_size=batch_size,
-    epochs=10, verbose=1,
-    validation_data=(X_test, y_test),
-    callbacks=[tensorboard]
+    #number of iterations(backpropogations)
+    epochs=15,
+    verbose=1,
+    validation_data=(X_test, y_test)
+    # callbacks=[tensorboard]
 )
+
+
+print(" -----------------------------CNN model accuracy ----------------------------------")
 
 score = cnn_model.evaluate(X_test, y_test, verbose=0)
 
-print('test loss: {:.4f}'.format(score[0]))
-print(' test acc: {:.4f}'.format(score[1]))
+print('test loss: {:.2f}'.format(score[0]))
+print('test acc: {:.2f}'.format(score[1]))
 
-
-'''
-udemy
-'''
-# # Part 2 - Building the CNN
-#
-# # Initialising the CNN
-# cnn = tf.keras.models.Sequential()
-#
-# # Step 1 - Convolution
-# cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, activation='relu', input_shape=[64, 64, 3]))
-#
-# # Step 2 - Pooling
-# cnn.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2))
-#
-# # Adding a second convolutional layer
-# cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, activation='relu'))
-# cnn.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2))
-#
-# # Step 3 - Flattening
-# cnn.add(tf.keras.layers.Flatten())
-#
-# # Step 4 - Full Connection
-# cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
-#
-# # Step 5 - Output Layer
-# cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
-#
-# # Part 3 - Training the CNN
-#
-# # Compiling the CNN
-# cnn.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-#
-# # Training the CNN on the Training set and evaluating it on the Test set
-# cnn.fit(x = X_train, validation_data = X_test, epochs = 25)
-#
-# # Part 4 - Making a single prediction
-#
-# import numpy as np
-# from keras.preprocessing import image
-# test_image = image.load_img('dataset/single_prediction/cat_or_dog_1.jpg', target_size = (64, 64))
-# test_image = image.img_to_array(test_image)
-# test_image = np.expand_dims(test_image, axis = 0)
-# result = cnn.predict(y_test)
-# X_train.class_indices
-# if result[0][0] == 1:
-#     prediction = 'dog'
-# else:
-#     prediction = 'cat'
-# print(prediction)
 
 
 '''
