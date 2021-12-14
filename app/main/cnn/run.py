@@ -65,7 +65,7 @@ cnn_model = Sequential([
     Dense(units=32, activation='relu'),
 
     #output layer
-    #As we are using multiple classification, the softmax feature is used.for Also we have 10 possible outouts, so the the density is 10.
+    #As we are using multiple classification, the softmax feature is used.for Also we have 10 possible outputs, so the the density is 10.
     Dense(10, activation='softmax')
 ])
 
