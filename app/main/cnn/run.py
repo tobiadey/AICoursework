@@ -18,9 +18,9 @@ import os
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
-import seaborn as sns
+# import seaborn as sns
 from app.main.base.run import X,y
-
+# import svm accuracy_score
 
 #use the keras built in to ensure the targets are categories
 y = tensorflow.keras.utils.to_categorical(y)
@@ -49,14 +49,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 # num_classes = y.shape[1]
 # im_shape = (im_rows, im_cols, 1)
 
-im_rows = 28
-im_cols = 28
+rows = 28
+cols = 28
 batch_size = 512
-im_shape = (im_rows, im_cols, 1)
+shape = (rows, cols, 1)
 num_classes = 10
 
-X_train = X_train.reshape(X_train.shape[0], *im_shape)
-X_test =X_test.reshape(X_test.shape[0], *im_shape)
+X_train = X_train.reshape(X_train.shape[0], *shape)
+X_test =X_test.reshape(X_test.shape[0], *shape)
 
 
 print(X_train.shape)
@@ -175,7 +175,7 @@ datagen.fit(X_train)
 
 model = Sequential()
 # kernals pick out what you need (edges,corners)
-model.add(Conv2D(64, kernel_size=4, activation='relu', strides=1, padding='same', input_shape=im_shape))
+model.add(Conv2D(64, kernel_size=4, activation='relu', strides=1, padding='same', input_shape=shape))
 model.add(Conv2D(32, 3, activation='relu'))
 model.add(MaxPooling2D(pool_size=2))
 model.add(Conv2D(64, 3, activation='relu', padding='same'))
@@ -186,9 +186,6 @@ model.add(Dense(128, activation='relu'))
 # last layer should be number of classes
 model.add(Dense(num_classes))
 model.add(Activation('softmax'))
-
-# model.add(Dense(32, activation='relu'))
-# model.add(Dense(10, activation='softmax'))
 
 
 custom = tensorflow.keras.optimizers.Adam(learning_rate=0.001)
@@ -225,6 +222,8 @@ plt2.plot(history.history['accuracy'],color=color)
 plt.ylabel('Accuracy')
 plt2.legend(['Accuracy'], loc='upper center')
 plt.show()
+
+# add confusion confusion_matrix
 
 # # Save model and weights
 # model_path = os.path.join(save_dir, model_name)

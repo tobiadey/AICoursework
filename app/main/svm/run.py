@@ -86,7 +86,7 @@ import tensorflow.keras.utils
 
 
 from sklearn.svm import SVC # "Support vector classifier"
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,confusion_matrix
 
 # play around with values to see if any improvement
 svm_model = SVC()
@@ -109,7 +109,8 @@ print(df_heads)
 print('Accuracy: %.2f' % accuracy_score(y_test, y_pred2))
 print('Mean:', np.mean(y_test))
 print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred2)))
-
+cm = confusion_matrix(y_test, y_pred2)
+print('confusion_matrix:',"\n",cm)
 
 
 
@@ -118,12 +119,12 @@ print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_p
 
 # from sklearn.model_selection import train_test_split
 # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
-#
+
 # from sklearn.svm import SVC
 # classifier =SVC(gamma='scale',kernel='rbf',C=8)
 # classifier.fit(X_train, y_train)
 
-#
+
 # y_pred = classifier.predict(X_test)
 # from sklearn.metrics import confusion_matrix, accuracy_score
 # cm = confusion_matrix(y_test, y_pred)
