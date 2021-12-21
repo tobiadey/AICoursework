@@ -113,26 +113,41 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
     plt.show()
 
 
-#play around
-# createCNN2( 64, 3, 2, 2, 128, 48)
-# -----------------------------CNN model accuracy with sample ----------------------------------
-# test loss: 0.35
-# test acc: 0.90
-# dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+# #play around
+# # createCNN2( 64, 3, 2, 2, 128, 48)
+# # -----------------------------CNN model accuracy with sample ----------------------------------
+# # test loss: 0.35
+# # test acc: 0.90
+# # dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+#
+# #  -----------------------------CNN model accuracy with actual data----------------------------------
+# # test loss: 0.32
+# # test acc: 0.92
+#
+# # createCNN2( 64, 3, 2, 2, 128, 25)
+# createCNN2( 64, 3, 2, 2, 128, 19)
+# #  -----------------------------CNN model accuracy with actual data----------------------------------
+# # test loss: 0.25
+# # test acc: 0.92
+# print('\n---------------')
+# createCNN2( 32,3,2,2,128,10)
+#
+#
+# print('\n---------------')
+# createCNN2( 64,3,2,2,128,10)
+#
+# print('\n---------------')
+# createCNN2( 64,3,2,2,128,48)
+#
+# print('\n---------------')
+# createCNN2( 64,3,2,2,128,25)
+#
+# print('\n---------------')
+# createCNN2( 32,3,2,2,128,19)
 
-#  -----------------------------CNN model accuracy with actual data----------------------------------
-# test loss: 0.32
-# test acc: 0.92
-
-# createCNN2( 64, 3, 2, 2, 128, 25)
-createCNN2( 64, 3, 2, 2, 128, 19)
-#  -----------------------------CNN model accuracy with actual data----------------------------------
-# test loss: 0.25
-# test acc: 0.92
-
-
-
-
+# best accuracy
+print('\n---------------')
+createCNN2( 32,3,2,2,128,48)
 
 # '''
 # New way without function

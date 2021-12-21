@@ -58,8 +58,9 @@ def processData():
     y_test = test_data[:,0]
 
     #print the shape of X and y
-    print('X_train: ' + str(x_train.shape))
-    print('Y_train:  '+ str( y_train.shape))
+    print('\n-------------------------training and testing data shapes------------------\n')
+    print('X: ' + str(x_train.shape))
+    print('Y:  '+ str( y_train.shape))
     print('X_test: ' + str(x_test.shape))
     print('Y_test:  '+ str( y_test.shape))
 
@@ -83,6 +84,13 @@ def trainData(X,y):
     return X_train,X_validate,y_train,y_validate
 
 X_train,X_validate,y_train,y_validate = trainData(X,y)
+
+# print the shape of X and y
+print('\n-------------------------training and validation data shapes after split---------------------\n')
+print('X_train: ' + str(X_train.shape))
+print('y_train:  ' + str(y_train.shape))
+print('X_validate: ' + str(X_validate.shape))
+print('y_validate:  ' + str(y_validate.shape))
 
 
 

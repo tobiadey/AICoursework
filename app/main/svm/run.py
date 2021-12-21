@@ -133,7 +133,7 @@ print("\n -----------------------------repeat above using a support vector machi
 
 print("SVM with default parameters...loading")
 createModel('svm', 'default')
-#the accuracy of SVM with c value default is : 0.8625
+#the accuracy of SVM with default params is : 0.8625
 
 '''createModel('svm', 4)'''
 #the accuracy of SVM with c value 4 is : 0.877
