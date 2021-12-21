@@ -99,6 +99,7 @@ def createModel(modelType,*c):
 
     elif modelType == 'lr':
         # for test data
+        print('\ntest data')
         print('\nMean:', np.mean(y_test))
         print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred2)))
 
@@ -130,14 +131,14 @@ print("\n -----------------------------repeat above using a support vector machi
 #create multiple svm models while trialling different C values
 
 
-print("SVM with default c value...loading")
+print("SVM with default parameters...loading")
 createModel('svm', 'default')
 #the accuracy of SVM with c value default is : 0.8625
 
 '''createModel('svm', 4)'''
 #the accuracy of SVM with c value 4 is : 0.877
 
-print("SVM with default 6 as value...loading")
+print("\nSVM with c value 6...loading")
 createModel('svm', 6)
 #the accuracy of SVM with c value 6 is : 0.8815
 

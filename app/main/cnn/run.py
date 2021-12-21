@@ -23,7 +23,7 @@ from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 # plt.show()
 # plt.close()
 
-print("CNN processing ", "\n")
+print("\n--------------------------------CNN processing----------------------------------\n")
 
 
 # A number of values that will be used below are set here.
@@ -38,9 +38,6 @@ X_train = X_train.reshape(X_train.shape[0], *shape)
 X_validate =X_validate.reshape(X_validate.shape[0], *shape)
 X_test = X_test.reshape(X_test.shape[0], *shape)
 
-
-# print(X_train.shape)
-# print(X_train[1][1])
 
 ''' highest accuracy CNN'''
 
@@ -72,7 +69,7 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
     # train the model. # epochs=umber of iterations(backpropogations)
     history=model.fit(X_train, y_train, batch_size=batch_size,epochs=epochs,verbose=1,validation_data=(X_validate, y_validate))
 
-    print(" -----------------------------CNN model accuracy (Validation test) ----------------------------------")
+    print("\n-----------------------------CNN model accuracy (Validation test) ----------------------------------")
 
     score = model.evaluate(X_validate, y_validate, verbose=0)
 
@@ -80,7 +77,7 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
     print('test acc: {:.2f}'.format(score[1]))
 
     # Plot training & validation loss values
-    print(history.history.keys())
+
     plt.plot(history.history['loss'])
     plt.title('Model loss/accuracy for Validation data')
     plt.ylabel('Loss')
@@ -94,7 +91,7 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
     plt2.legend(['Accuracy'], loc='upper center')
     plt.show()
 
-    print(" -----------------------------CNN model accuracy (Testing data) ----------------------------------")
+    print("\n-----------------------------CNN model accuracy (Testing data) ----------------------------------")
 
     score = model.evaluate(X_test, y_test, verbose=0)
 
@@ -102,7 +99,6 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
     print('test acc: {:.2f}'.format(score[1]))
 
     # Plot training & validation loss values
-    print(history.history.keys())
     plt.plot(history.history['loss'])
     plt.title('Model loss/accuracy for Testing data')
     plt.ylabel('Loss')
