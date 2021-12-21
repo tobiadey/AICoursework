@@ -14,8 +14,8 @@ print("Loading breast Fashion MNIST dataset")
 
 def processData():
     # Import the dataset
-    df_train = pd.read_csv('./data/' + 'fashionTest.csv')
-    df_test = pd.read_csv('./data/' + 'fashionTrain.csv')
+    df_train = pd.read_csv('./data/' + 'fashionTrain.csv')
+    df_test = pd.read_csv('./data/' + 'fashionTest.csv')
 
     print("-------------------------print head of dataframe (train)------------------------")
     print(df_train.head())
