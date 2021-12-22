@@ -20,3 +20,13 @@ python3 run.py in parent directory (coursework)
 This will run what ever files in imported in the run.py file which as of now are:
 # from app.main.svm.run import *
 # from app.main.cnn.run import *
+
+
+#Tips:
+When a chart opens close it to continue running the code.
+
+SVM wait time (c value default)- 8 mins
+
+SVM wait time (c value 6)- 8mins
+
+CNN wait time -

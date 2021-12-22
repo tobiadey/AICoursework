@@ -50,6 +50,8 @@ def createModel(modelType,*c):
 
 
 
+
+
     print(" -----------------------------use this trained model to predict the value for the validation data--------------------------")
     print(" -----------------------------compare prediction to actual values ----------------------------------")
 
@@ -70,6 +72,10 @@ def createModel(modelType,*c):
         df_head2 = df_compare2.head(25)
         print(df_head2)
 
+        # print("\n=================================================================================================================\n")
+        # print("Testing someeeeeeee----------------------------------")
+        # print("coeff"+ str(model.coef_))
+        # print("intercept "+ str(model.intercept_) )
 
 
 
@@ -110,6 +116,8 @@ def createModel(modelType,*c):
 
         print(" -----------------------------model coef ----------------------------------")
         print(model.coef_)
+        print(model.intercept_)
+
         # plot the predictions versus actual results (with the x=y line down the middle
         # Regression chart
         chart_regression('Validation',y_pred[:100].flatten(), y_validate[:100], sort=True)
