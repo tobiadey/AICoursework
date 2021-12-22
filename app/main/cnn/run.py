@@ -125,8 +125,7 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
 
     plt.show()
 
-    # save model
-    model.save('cnn.h5')
+
 
 
 # #play around
