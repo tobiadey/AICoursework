@@ -61,6 +61,8 @@ def createModel(modelType,*c):
     print(df_head)
 
     if modelType== 'lr':
+
+
         y_pred2 = model.predict(X_test)
 
         # for test data
@@ -80,6 +82,9 @@ def createModel(modelType,*c):
     print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_validate, y_pred)))
 
     if modelType == 'svm':
+
+        # save model
+
 
         # for validation data
         # Model Accuracy: how often is the classifier correct?

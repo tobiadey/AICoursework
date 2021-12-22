@@ -48,7 +48,7 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
     model = Sequential()
     # For the convolutional stage, add the number of feature detectors, alongside the feature detector size. 3 indicates to a 3x3 matrix. and set the activation to relu.
     # 32 is a classic filter number.
-    model.add(Conv2D(filters=filterSize, kernel_size=kernelSize, activation='relu', input_shape=shape))
+    model.add(Conv2D(filters=filterSize, kernel_size=kernelSize,padding = 'same', activation='relu', input_shape=shape))
     # Apply the max pooling feature to our feature map. This helps with identifying certain features in different positions within the image, eg. when an animal is facing right or left.
     # 2x2 matrix with a strides of 2
     model.add(MaxPooling2D(pool_size=poolSize, strides=strides))
@@ -104,13 +104,29 @@ def createCNN2( filterSize, kernelSize, strides, poolSize, density, epochs):
     plt.ylabel('Loss')
     plt.xlabel('Epoch')
     plt.legend(['Loss'], loc='upper left')
-
     plt2 = plt.twinx()
     color = 'red'
     plt2.plot(history.history['accuracy'], color=color)
     plt.ylabel('Accuracy')
     plt2.legend(['Accuracy'], loc='upper center')
+    # plot accuracy
+
     plt.show()
+    # code adapted from
+    # Brownlee, J., 2021. DeepLearning CNN for Fashion - MNIST Clothing Classification.[online] Machine Learning Mastery.Available at: <
+    # https: // machinelearningmastery.com / how - to - develop - a - cnn -
+    # from -scratch - for -fashion - mnist - clothing - classification / > [Accessed 22 December 2021].
+
+    plt.subplot(212)
+    plt.title('Classification Accuracy')
+    plt.plot(history.history['accuracy'], color='blue', label='train')
+    plt.plot(history.history['val_accuracy'], color='orange', label='test')
+
+
+    plt.show()
+
+    # save model
+    model.save('cnn.h5')
 
 
 # #play around
