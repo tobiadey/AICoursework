@@ -1,3 +1,4 @@
+# Fashion Mnist Classification (Linear,SVM,CNN)
 # AICoursework
 Introduction to Artificial Intelligence (IN3062)
 
